@@ -1,110 +1,38 @@
-import Image from "next/image";
+const domains = [
+  { Icon: "/Svg_Arcana.svg", name: "Arcana", slug: "arcana", baseColor: "#9333ea" },
+  { Icon: "/Svg_Blade.svg", name: "Blade", slug: "blade", baseColor: "#dc2626" },
+  { Icon: "/Svg_Bone.svg", name: "Bone", slug: "bone", baseColor: "#6b7280" },
+  { Icon: "/Svg_Codex.svg", name: "Codex", slug: "codex", baseColor: "#2563eb" },
+  { Icon: "/Svg_Grace.svg", name: "Grace", slug: "grace", baseColor: "#ec4899" },
+  { Icon: "/Svg_Midnight.svg", name: "Midnight", slug: "midnight", baseColor: "#475569" },
+  { Icon: "/Svg_Sage.svg", name: "Sage", slug: "sage", baseColor: "#059669" },
+  { Icon: "/Svg_Splendor.svg", name: "Splendor", slug: "splendor", baseColor: "#d97706" },
+  { Icon: "/Svg_Valor.svg", name: "Valor", slug: "valor", baseColor: "#ea580c" },
+];
+
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h1 className="font-bold text-5xl">Daggerheart Quick Ref</h1>
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by clicking the domain you wish
-          </li>
-          <li className="tracking-[-.01em]">
-            Check the cards you want.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-80 px-4 sm:px-5 sm:w-auto"
-          >
-            <Image
-            src="/Svg_Arcana.svg"
-            alt="dh logo"
-            width={180}
-            height={38}
-            priority></Image>
-          </a>
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-80 px-4 sm:px-5 sm:w-auto"
-          >
-            <Image
-            src="/Svg_Blade.svg"
-            alt="dh logo"
-            width={180}
-            height={38}
-            priority></Image>
-          </a>
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-80 px-4 sm:px-5 sm:w-auto"
-          >
-            <Image
-            src="/Svg_Bone.svg"
-            alt="dh logo"
-            width={180}
-            height={38}
-            priority></Image>
-          </a>
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-80 px-4 sm:px-5 sm:w-auto"
-          >
-            <Image
-            src="/Svg_Codex.svg"
-            alt="dh logo"
-            width={180}
-            height={38}
-            priority></Image>
-          </a>
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-80 px-4 sm:px-5 sm:w-auto"
-          >
-            <Image
-            src="/Svg_Grace.svg"
-            alt="dh logo"
-            width={180}
-            height={38}
-            priority></Image>
-          </a>
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-80 px-4 sm:px-5 sm:w-auto"
-          >
-            <Image
-            src="/Svg_Midnight.svg"
-            alt="dh logo"
-            width={180}
-            height={38}
-            priority></Image>
-          </a>
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-80 px-4 sm:px-5 sm:w-auto"
-          >
-            <Image
-            src="/Svg_Sage.svg"
-            alt="dh logo"
-            width={180}
-            height={38}
-            priority></Image>
-          </a>
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-80 px-4 sm:px-5 sm:w-auto"
-          >
-            <Image
-            src="/Svg_Splendor.svg"
-            alt="dh logo"
-            width={180}
-            height={38}
-            priority></Image>
-          </a>
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-80 px-4 sm:px-5 sm:w-auto"
-          >
-            <Image
-            src="/Svg_Valor.svg"
-            alt="dh logo"
-            width={180}
-            height={38}
-            priority></Image>
-          </a>
+    <div className="min-h-screen p-4 sm:p-8 lg:p-20">
+      <main className="max-w-7xl mx-auto">
+        {/* Header Section */}
+        <div className="text-left mb-8 sm:mb-12 lg:mb-16">
+          <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6">
+            Daggerheart Quick Ref
+          </h1>
+          <div className="max-w-2xl">
+            <ol className="font-mono text-sm sm:text-base lg:text-lg space-y-2">
+              <li className="tracking-[-0.01em]">
+                Get started by clicking the domain you wish
+              </li>
+              <li className="tracking-[-0.01em]">
+                Check the cards you want.
+              </li>
+            </ol>
+          </div>
+        </div>
+        {/*Domain Grid*/}
+        <div>
           
         </div>
       </main>
