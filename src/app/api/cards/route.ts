@@ -3,42 +3,68 @@ import { connectToDatabase } from "@/app/lib/mongodb";
 import { ObjectId } from "mongodb";
 
 export async function GET (request: Request) {
-    const {searchParams} = new URL(request.url);
-    const domainName = searchParams.get("domain");
-
-    if(!domainName){
-        return NextResponse.json({ error: "Domain Not Found" }, {status: 400});
-    }
-
+    
     try {
-        const { db } = await connectToDatabase();
+        const {searchParams} = new URL(request.url);
+        const domainName = searchParams.get("domain");
 
-        /*Fetch the data
-        Find the domain object id*/
-        const domain = await db.collection("domains")
-        .findOne({title: domainName}) //get all data from domain by searching domain name
-
-        if(!domain){
-            return NextResponse.json({error: "Domain Not Found" }, {status: 404});
+        if(!domainName){
+            return NextResponse.json({ error: "Domain parameter required" }, {status: 400});
         }
 
-        //Find the domain cards with the domain id
-        const cards = await db.collection("abilities")
-        .find({domain_id: new ObjectId(domain._id)}) //id i got from last querry
-        .project({title: 1, description: 1}) //choose the values I want
-        .toArray();
+        const { db } = await connectToDatabase();
 
-        return NextResponse.json({
+        // Search for the specific domain
+        const domain = await db.collection("domains").findOne({title: domainName});
+
+        if(!domain){
+            console.log("Domain not found");
+            return NextResponse.json({
+                error: "Domain Not Found"
+            }, {status: 404});
+        }
+
+        console.log("Domain found:", {
+            id: domain._id,
+            title: domain.title,
+            hasDescription: !!domain.description
+        });
+
+        // Handle domnain id as ObjectId 
+        let domainObjectId;
+        try {
+            domainObjectId = domain._id instanceof ObjectId ? domain._id : new ObjectId(domain._id);
+        } catch (objectIdError) {
+            console.error("Error creating ObjectId:", objectIdError);
+            return NextResponse.json({error: "Invalid domain ID"}, {status: 500});
+        }
+
+        // fetch cards by domain id
+        const cards = await db.collection("abilities")
+            .find({domain_id: domainObjectId})
+            .project({title: 1, description: 1, level: 1, type: 1, recall_cost: 1})
+            .toArray();
+
+        const response = {
             domain: {
                 _id: domain._id,
-                name: domain.name,
+                title: domain.title,
                 description: domain.description
             },
-            cards
-        });
-    }catch(error){
-        console.error("Error fetching cards", error);
-        return NextResponse.json({error: "Failed to fetch cards"}, {status: 500});
-    }
+            cards: cards
+        };
 
+        return NextResponse.json(response);
+
+    } catch(error) {
+        console.error("=== API Route Error ===");
+        console.error("Error details:", error);
+        console.error("Error stack:", error instanceof Error ? error.stack : "No stack");
+        
+        return NextResponse.json({
+            error: "Internal server error", 
+            details: error instanceof Error ? error.message : "Unknown error",
+            timestamp: new Date().toISOString()
+        }, {status: 500});
+    }
 }
