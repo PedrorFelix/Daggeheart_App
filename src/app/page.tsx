@@ -1,17 +1,38 @@
+"use client";
+
 import Link from "next/link";
 import { domains } from "@/app/lib/domains";
+import { useState } from "react";
 
 export default function Home() {
+  const [logoColor, setLogoColor] = useState('#ffffff');
+
   return (
-    <div className="min-h-screen p-4 sm:p-8 lg:p-20">
-      <main className="max-w-7xl mx-auto">
+    <div className="min-h-screen p-4 sm:p-8 lg:p-20 bg-gray-900">
+      {/* DH Logo Background */}
+      <div
+        className="fixed pointer-events-none z-0 opacity-15 transition-colors duration-300"
+        style={{
+          width: '150vw',
+          height: '150vh',
+          bottom: '-50vh',
+          right: '-50vw',
+          mask: `url(/Svg_DhLogo.svg) no-repeat center`,
+          maskSize: "contain",
+          WebkitMask: `url(/Svg_DhLogo.svg) no-repeat center`,
+          WebkitMaskSize: "contain",
+          backgroundColor: logoColor,
+        }}
+      />
+
+      <main className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
         <div className="text-left mb-8 sm:mb-12 lg:mb-16">
-          <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6">
+          <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6 text-white">
             Daggerheart Quick Guide
           </h1>
           <div className="max-w-2xl">
-            <ol className="font-mono text-sm sm:text-base lg:text-lg space-y-2 list-decimal list-inside">
+            <ol className="font-mono text-sm sm:text-base lg:text-lg space-y-2 list-decimal list-inside text-gray-300">
               <li className="tracking-[-0.01em]">
                 Get started by clicking the domain you wish
               </li>
@@ -42,6 +63,8 @@ export default function Home() {
                 backgroundImage: `linear-gradient(to bottom right, ${domain.baseColor}20, ${domain.baseColor}20)`,
                 borderColor: domain.baseColor,
               }}
+              onMouseEnter={() => setLogoColor(domain.baseColor)}
+              onMouseLeave={() => setLogoColor('#ffffff')}
               aria-label={`Explore ${domain.name} domain`}
             >
               <div className="p-4 sm:p-6 lg:p-8 w-full h-full flex flex-col items-center justify-center">

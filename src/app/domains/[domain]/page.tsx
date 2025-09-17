@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { domains } from "@/app/lib/domains";
+import Link from "next/link";
 
 type DomainPageProps = {
   params: {
@@ -53,11 +54,17 @@ export default async function DomainPage({ params }: DomainPageProps) {
     console.log("API response:", data);
 
     return (
-      <main className="min-h-screen p-8 flex flex-col items-center justify-start">
-        {/* Icon */}
+      <main 
+        className="min-h-screen p-8 flex flex-col items-center justify-start relative bg-gray-900"
+      >
+        {/* Domain SVG Background*/}
         <div
-          className="w-32 h-32 mb-6"
+          className="fixed pointer-events-none z-0 opacity-15"
           style={{
+            width: '150vw',
+            height: '150vh',
+            bottom: '-50vh',
+            right: '-50vw',
             mask: `url(${domainData.Icon}) no-repeat center`,
             maskSize: "contain",
             WebkitMask: `url(${domainData.Icon}) no-repeat center`,
@@ -66,18 +73,25 @@ export default async function DomainPage({ params }: DomainPageProps) {
           }}
         />
 
+        {/* Return button */}
+        <Link
+          className="p-1.5 mb-3 rounded"
+          style={{ backgroundColor: domainData.baseColor }}
+          href="/">
+        Return</Link>
+
         {/* Name */}
-        <h1 className="text-4xl font-bold mb-4" style={{ color: domainData.baseColor }}>
+        <h1 className="text-4xl font-bold mb-4 relative z-10" style={{ color: domainData.baseColor }}>
           {domainData.name}
         </h1>
 
         {/* Description */}
-        <p className="text-lg text-gray-700 dark:text-gray-300 text-center max-w-4xl mb-8">
+        <p className="text-lg text-gray-700 dark:text-gray-300 text-center max-w-4xl mb-8 relative z-10">
           {data.domain.description}
         </p>
 
         {/* Domain Cards */}
-        <div className="w-full max-w-6xl">
+        <div className="w-full max-w-6xl relative z-10">
           <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: domainData.baseColor }}>
             Domain Cards
           </h2>
