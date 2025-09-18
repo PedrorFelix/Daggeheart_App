@@ -77,7 +77,7 @@ export default async function DomainPage({ params }: DomainPageProps) {
         <Link
           className="p-1.5 mb-3 rounded"
           style={{ backgroundColor: domainData.baseColor }}
-          href="/">
+          href="/domains">
         Return</Link>
 
         {/* Name */}
