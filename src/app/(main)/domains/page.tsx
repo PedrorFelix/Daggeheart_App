@@ -1,13 +1,21 @@
 "use client";
 
-import Link from "next/link";
+import { useColor } from "@/app/contexts/logoColor";
 import { domains } from "@/app/lib/domains";
-import { useState } from "react";
+import Link from "next/link";
 
-export default function Home() {
-  const [logoColor, setLogoColor] = useState('#ffffff');
+export default function Domain() {
+  const { setColor } = useColor();
 
-  return (
+  const handleHoverColor = (domainColor: string) => {
+    setColor(domainColor);
+  };
+
+  const handleResetColor = () => {
+    setColor('#ffffff');
+  }
+
+  return(
     <div>
       <main className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
@@ -47,8 +55,8 @@ export default function Home() {
                 backgroundImage: `linear-gradient(to bottom right, ${domain.baseColor}20, ${domain.baseColor}20)`,
                 borderColor: domain.baseColor,
               }}
-              onMouseEnter={() => setLogoColor(domain.baseColor)}
-              onMouseLeave={() => setLogoColor('#ffffff')}
+              onMouseEnter={() => handleHoverColor(domain.baseColor)}
+              onMouseLeave={handleResetColor}
               aria-label={`Explore ${domain.name} domain`}
             >
               <div className="p-4 sm:p-6 lg:p-8 w-full h-full flex flex-col items-center justify-center">
