@@ -1,28 +1,9 @@
-"use client";
-
 import Link from "next/link";
 
-export default function App() {
-
+export default function HomePage() {
   return (
-    <div className="min-h-screen p-4 sm:p-8 lg:p-20 bg-gray-900">
-      {/* DH Logo Background */}
-      <div
-        className="fixed pointer-events-none z-0 opacity-15 transition-colors duration-300"
-        style={{
-          width: "150vw",
-          height: "150vh",
-          bottom: "-50vh",
-          right: "-50vw",
-          mask: `url(/Svg_DhLogo.svg) no-repeat center`,
-          maskSize: "contain",
-          WebkitMask: `url(/Svg_DhLogo.svg) no-repeat center`,
-          WebkitMaskSize: "contain",
-          backgroundColor: '#ffffff',
-        }}
-      />
-
-      <main className="max-w-7xl mx-auto relative z-10">
+    <div className="p-4 sm:p-8 lg:p-20">
+      <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-left mb-8 sm:mb-12 lg:mb-16">
           <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6 text-white">
@@ -30,14 +11,36 @@ export default function App() {
           </h1>
         </div>
 
-        <Link
-        href="/domains">Domains</Link>
-        {/*Add Species, Backgrounds and Classes*/}
+        {/* Navigation Link */}
+        <div className="mb-8 grid grid-cols-1">
+          <Link 
+            href="/domains"
+            className="inline-block px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg"
+          >
+          Domains
+          </Link>
+          <Link 
+            href="/classes"
+            className="inline-block px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg"
+          >
+          Classes
+          </Link>
+          <Link 
+            href="/ancestry"
+            className="inline-block px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg"
+          >
+          Ancestry
+          </Link><Link 
+            href="/Characters"
+            className="inline-block px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg"
+          >
+          Characters
+          </Link>
+        </div>
 
         {/* Footer spacing */}
         <div className="h-8 sm:h-12 lg:h-16"></div>
-      </main>
+      </div>
     </div>
   );
-
 }

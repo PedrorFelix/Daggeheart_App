@@ -8,29 +8,23 @@ export default function Home() {
   const [logoColor, setLogoColor] = useState('#ffffff');
 
   return (
-    <div className="min-h-screen p-4 sm:p-8 lg:p-20 bg-gray-900">
-      {/* DH Logo Background Overlay - Fixed, Large, and Centered on bottom-right corner */}
-      <div
-        className="fixed pointer-events-none z-0 opacity-15 transition-colors duration-300"
-        style={{
-          width: '150vw',
-          height: '150vh',
-          bottom: '-50vh', // Move up by half the height to center vertically on bottom edge
-          right: '-50vw',  // Move left by half the width to center horizontally on right edge
-          mask: `url(/Svg_DhLogo.svg) no-repeat center`,
-          maskSize: "contain",
-          WebkitMask: `url(/Svg_DhLogo.svg) no-repeat center`,
-          WebkitMaskSize: "contain",
-          backgroundColor: logoColor,
-        }}
-      />
-
+    <div>
       <main className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
         <div className="text-left mb-8 sm:mb-12 lg:mb-16">
           <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6 text-white">
             Daggerheart Quick Guide
           </h1>
+        </div>
+
+        {/* Navigation Link */}
+        <div className="mb-8">
+          <Link 
+            href="/"
+            className="inline-block px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg"
+          >
+          Back
+          </Link>
         </div>
 
         {/* Domain Grid */}
