@@ -1,6 +1,6 @@
 "use client";
 
-import { useColor } from "@/app/contexts/logoColor";
+import { useColor } from "@/app/contexts/colorContext";
 import { domains } from "@/app/lib/domains";
 import Link from "next/link";
 
@@ -16,7 +16,7 @@ export default function Domain() {
   }
 
   return(
-    <div>
+    <div className="p-4 sm:p-8 lg:p-20">
       <main className="max-w-7xl mx-auto relative z-10">
         {/* Header Section */}
         <div className="text-left mb-8 sm:mb-12 lg:mb-16">

@@ -1,10 +1,12 @@
 'use client';
 
-import { useColor } from "../contexts/logoColor";
+import { BackgroundProvider } from "../contexts/backgroundContext";
+
+function changeColor() {};
 
 export default function ClientLayout({children}: {children: React.ReactNode}) {
 
-    const {color} = useColor();
+    const {color} = BackgroundProvider.setColor();
 
     return(
         <div className="min-h-screen bg-gray-900">
