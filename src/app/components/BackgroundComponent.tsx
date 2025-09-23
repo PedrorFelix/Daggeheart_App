@@ -9,7 +9,7 @@ export default function ClientLayout({children}: {children: React.ReactNode}) {
     return(
         <div className="min-h-screen bg-gray-900">
             <div
-                className="fixed pointer-events-none z-0 opacity-15 transition-colors duration-300"
+                className="fixed pointer-events-none z-0 opacity-15 transition-colors duration-500"
                 style={{
                     width: '150vw',
                     height: '150vh',
@@ -19,7 +19,7 @@ export default function ClientLayout({children}: {children: React.ReactNode}) {
                     maskSize: 'contain',
                     WebkitMask: 'url(/Svg_DhLogo.svg) no-repeat center',
                     WebkitMaskSize: 'contain',
-                    backgroundColor: color
+                    backgroundColor: '#ffffff'
                 }}
             />
 

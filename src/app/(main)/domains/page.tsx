@@ -85,7 +85,7 @@ export default function Domain() {
                       WebkitMask: `url(${domain.Icon}) no-repeat center`,
                       WebkitMaskSize: "contain",
                       backgroundColor: domain.baseColor,
-                      transition: "all 0.8s ease-in-out",
+                      transition: "all 0.2s ease-in-out",
                     }}
                   />
                 </div>
