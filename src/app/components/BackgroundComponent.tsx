@@ -1,12 +1,10 @@
 'use client';
 
-import { BackgroundProvider } from "../contexts/backgroundContext";
-
-function changeColor() {};
+import { useBackground } from "../contexts/backgroundContext";
 
 export default function ClientLayout({children}: {children: React.ReactNode}) {
 
-    const {color} = BackgroundProvider.setColor();
+    const { color, logo } = useBackground();
 
     return(
         <div className="min-h-screen bg-gray-900">
@@ -17,7 +15,7 @@ export default function ClientLayout({children}: {children: React.ReactNode}) {
                     height: '150vh',
                     bottom: '-50vh',
                     right: '-50vw',
-                    mask: 'url(/Svg_DhLogo.svg) no-repeat center',
+                    mask: `url(${logo}) no-repeat center`,
                     maskSize: 'contain',
                     WebkitMask: 'url(/Svg_DhLogo.svg) no-repeat center',
                     WebkitMaskSize: 'contain',

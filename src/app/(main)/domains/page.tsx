@@ -1,18 +1,20 @@
 "use client";
 
-import { useColor } from "@/app/contexts/colorContext";
+import { useBackground } from "@/app/contexts/backgroundContext";
 import { domains } from "@/app/lib/domains";
 import Link from "next/link";
 
 export default function Domain() {
-  const { setColor } = useColor();
+  const { setColor, setLogo } = useBackground();
 
-  const handleHoverColor = (domainColor: string) => {
+  const handleHoverColor = (domainColor: string, domainLogo: string) => {
     setColor(domainColor);
+    setLogo(domainLogo);
   };
 
   const handleResetColor = () => {
     setColor('#ffffff');
+    setLogo('/Svg_DhLogo.svg');
   }
 
   return(
@@ -55,7 +57,7 @@ export default function Domain() {
                 backgroundImage: `linear-gradient(to bottom right, ${domain.baseColor}20, ${domain.baseColor}20)`,
                 borderColor: domain.baseColor,
               }}
-              onMouseEnter={() => handleHoverColor(domain.baseColor)}
+              onMouseEnter={() => handleHoverColor(domain.baseColor, domain.Icon)}
               onMouseLeave={handleResetColor}
               aria-label={`Explore ${domain.name} domain`}
             >
@@ -83,7 +85,7 @@ export default function Domain() {
                       WebkitMask: `url(${domain.Icon}) no-repeat center`,
                       WebkitMaskSize: "contain",
                       backgroundColor: domain.baseColor,
-                      transition: "all 0.2s ease-in-out",
+                      transition: "all 0.8s ease-in-out",
                     }}
                   />
                 </div>

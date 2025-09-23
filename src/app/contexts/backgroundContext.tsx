@@ -13,7 +13,7 @@ const BackgroundContext = createContext<BackgroundContextType | undefined> (unde
 
 export function BackgroundProvider( {children}: {children: ReactNode}){
     const [color, setColor] = useState('#ffffff');
-    const [logo, setLogo] = useState("@/Svg_DhLogo.svg")
+    const [logo, setLogo] = useState("/Svg_DhLogo.svg")
 
     return(
         <BackgroundContext.Provider value ={{color, logo, setColor, setLogo}}>
