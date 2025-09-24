@@ -1,6 +1,8 @@
 import Link from "next/link";
+import CardButton from "@/app/components/StaticCardButton";
 
 export default function HomePage() {
+  
   return (
     <div className="p-4 sm:p-8 lg:p-20">
       <div className="max-w-7xl mx-auto">
@@ -12,30 +14,12 @@ export default function HomePage() {
         </div>
 
         {/* Navigation Link */}
-        <div className="mb-8 grid grid-cols-1">
-          <Link 
-            href="/domains"
-            className="inline-block px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg"
-          >
-          Domains
-          </Link>
-          <Link 
-            href="/classes"
-            className="inline-block px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg"
-          >
-          Classes
-          </Link>
-          <Link 
-            href="/ancestry"
-            className="inline-block px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg"
-          >
-          Ancestry
-          </Link><Link 
-            href="/Characters"
-            className="inline-block px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg"
-          >
-          Characters
-          </Link>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-10 justify-items-center">
+          {CardButton("Domains", "/domains", "#40454e", "/Svg_DhLogo.svg")}
+          {CardButton("Ancestry", "/domains", "#40454e", "/Svg_Dhlogo.svg")}
+          {CardButton("Classes", "/domains", "#40454e", "/Svg_DhLogo.svg")}
+          {CardButton("Equipment", "/domains", "#40454e", "/Svg_DhLogo.svg")}
+          {CardButton("Random Gen.", "/domains", "#40454e", "/Svg_DhLogo.svg")}
         </div>
 
         {/* Footer spacing */}

@@ -54,100 +54,114 @@ export default async function DomainPage({ params }: DomainPageProps) {
     console.log("API response:", data);
 
     return (
-      <main 
-        className="min-h-screen p-8 flex flex-col items-center justify-start relative bg-gray-900"
-      >
-        {/* Domain SVG Background*/}
-        <div
-          className="fixed pointer-events-none z-0 opacity-15"
-          style={{
-            width: '150vw',
-            height: '150vh',
-            bottom: '-50vh',
-            right: '-50vw',
-            mask: `url(${domainData.Icon}) no-repeat center`,
-            maskSize: "contain",
-            WebkitMask: `url(${domainData.Icon}) no-repeat center`,
-            WebkitMaskSize: "contain",
-            backgroundColor: domainData.baseColor,
-          }}
-        />
+      <div className="p-4 sm:p-8 lg:p-20">
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Header Section */}
+          <div className="text-left mb-8 sm:mb-12 lg:mb-16">
+            <h1 
+              className="font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6"
+              style={{ color: domainData.baseColor }}
+            >
+              {domainData.name}
+            </h1>
+            <p className="text-lg text-gray-300 max-w-4xl leading-relaxed">
+              {data.domain.description}
+            </p>
+          </div>
 
-        {/* Return button */}
-        <Link
-          className="p-1.5 mb-3 rounded"
-          style={{ backgroundColor: domainData.baseColor }}
-          href="/domains">
-        Return</Link>
+          {/* Navigation Link */}
+          <div className="mb-8">
+            <Link 
+              href="/domains"
+              className="inline-block px-6 py-3  text-white font-semibold rounded-lg "
+              style={{ backgroundColor: domainData.baseColor}}
+            >
+              Back to Domains
+            </Link>
+          </div>
 
-        {/* Name */}
-        <h1 className="text-4xl font-bold mb-4 relative z-10" style={{ color: domainData.baseColor }}>
-          {domainData.name}
-        </h1>
-
-        {/* Description */}
-        <p className="text-lg text-gray-700 dark:text-gray-300 text-center max-w-4xl mb-8 relative z-10">
-          {data.domain.description}
-        </p>
-
-        {/* Domain Cards */}
-        <div className="w-full max-w-6xl relative z-10">
-          <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: domainData.baseColor }}>
-            Domain Cards
-          </h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {/*For each card found*/}
-            {data.cards.map((card) => (
-              <div
-                key={card._id}
-                className="p-6 rounded-lg border-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm hover:shadow-lg transition-all duration-200"
-                style={{
-                  borderColor: domainData.baseColor,
-                }}
-              >
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-bold" style={{ color: domainData.baseColor }}>
-                    {card.title}
-                  </h3>
-                  <div className="text-right">
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                      Level {card.level}
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      {card.type}
+          {/* Domain Cards Section */}
+          <div className="mb-8">
+            <h2 
+              className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8"
+              style={{ color: domainData.baseColor }}
+            >
+              Domain Cards
+            </h2>
+            
+            <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {data.cards.map((card) => (
+                <div
+                  key={card._id}
+                  className="p-6 rounded-lg border-2 bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm hover:bg-white/20 dark:hover:bg-gray-800/30 hover:shadow-lg transition-all duration-200"
+                  style={{
+                    borderColor: domainData.baseColor,
+                  }}
+                >
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 
+                      className="text-xl font-bold"
+                      style={{ color: domainData.baseColor }}
+                    >
+                      {card.title}
+                    </h3>
+                    <div className="text-right">
+                      <div className="text-sm font-medium text-gray-300">
+                        Level {card.level}
+                      </div>
+                      <div className="text-sm text-gray-400">
+                        {card.type}
+                      </div>
                     </div>
                   </div>
+                  
+                  <p className="text-gray-300 mb-3 leading-relaxed">
+                    {card.description}
+                  </p>
+                  
+                  <div 
+                    className="text-sm font-medium"
+                    style={{ color: domainData.baseColor }}
+                  >
+                    Recall Cost: {card.recall_cost}
+                  </div>
                 </div>
-                
-                <p className="text-gray-700 dark:text-gray-300 mb-3 leading-relaxed">
-                  {card.description}
-                </p>
-                
-                <div className="text-sm font-medium" style={{ color: domainData.baseColor }}>
-                  Recall Cost: {card.recall_cost}
-                </div>
-                
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+
+          {/* Footer spacing */}
+          <div className="h-8 sm:h-12 lg:h-16"></div>
         </div>
-      </main>
+      </div>
     );
-  } catch (error) { //Error Handling Render
+  } catch (error) {
     console.error("Error fetching domain data:", error);
     
     return (
-      <main className="min-h-screen p-8 flex flex-col items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4 text-red-600">Error</h1>
-          <p className="text-lg text-gray-700 dark:text-gray-300">
-            Failed to load domain data. Please try again later.
-          </p>
-          <p className="text-sm text-gray-500 mt-2">
-            Check the console for more details.
-          </p>
+      <div className="p-4 sm:p-8 lg:p-20">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold mb-4 text-red-600">Error</h1>
+            <p className="text-lg text-gray-300 mb-4">
+              Failed to load domain data. Please try again later.
+            </p>
+            <p className="text-sm text-gray-400 mb-8">
+              Check the console for more details.
+            </p>
+            
+            <Link 
+              href="/domains"
+              className="inline-block px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors"
+            >
+              Back to Domains
+            </Link>
+          </div>
+          
+          {/* Footer spacing */}
+          <div className="h-8 sm:h-12 lg:h-16"></div>
         </div>
-      </main>
+      </div>
     );
   }
 }
