@@ -2,8 +2,9 @@
 
 import { domains } from "@/app/lib/domains";
 import Link from "next/link";
+import { Suspense } from "react";
+import LoadingAnimation from "@/app/components/LoadingAnimation";
 import CardButton from "@/app/components/CardButton";
-import { collectRoutesUsingEdgeRuntime } from "next/dist/build/utils";
 
 export default function Domain() {
 
@@ -28,17 +29,19 @@ export default function Domain() {
         </div>
 
         {/* Domain Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-10 justify-items-center">
-          {domains.map((domain) => (
-            <CardButton
-            key = {domain.name}
-            name = {domain.name}
-            href = {`/domains/${domain.name}`}
-            color = {domain.baseColor}
-            icon = {domain.Icon}
-            />
-          ))}
-        </div>
+        <Suspense fallback={<LoadingAnimation message="Loading Domain Cards ..."/>}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-10 justify-items-center">
+            {domains.map((domain) => (
+              <CardButton
+              key = {domain.name}
+              name = {domain.name}
+              href = {`/domains/${domain.name}`}
+              color = {domain.baseColor}
+              icon = {domain.Icon}
+              />
+            ))}
+          </div>
+        </Suspense>
 
         {/* Footer spacing */}
         <div className="h-8 sm:h-12 lg:h-16"></div>
