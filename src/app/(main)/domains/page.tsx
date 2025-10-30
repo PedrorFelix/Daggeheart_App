@@ -2,7 +2,8 @@
 
 import { domains } from "@/app/lib/domains";
 import Link from "next/link";
-import CardButton from "@/app/components/DynamicCardButton";
+import CardButton from "@/app/components/CardButton";
+import { collectRoutesUsingEdgeRuntime } from "next/dist/build/utils";
 
 export default function Domain() {
 
@@ -29,7 +30,13 @@ export default function Domain() {
         {/* Domain Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-10 justify-items-center">
           {domains.map((domain) => (
-            CardButton(domain.name, `/domains/${domain.name}`, domain.baseColor, domain.Icon )
+            <CardButton
+            key = {domain.name}
+            name = {domain.name}
+            href = {`/domains/${domain.name}`}
+            color = {domain.baseColor}
+            icon = {domain.Icon}
+            />
           ))}
         </div>
 
