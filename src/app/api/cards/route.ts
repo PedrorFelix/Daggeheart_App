@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectToDatabase } from "@/app/lib/mongodb";
 import { ObjectId } from "mongodb";
+import type { DomainResponse } from "@/app/types/database";
 
 export async function GET (request: Request) {
     
@@ -45,13 +46,20 @@ export async function GET (request: Request) {
             .project({title: 1, description: 1, level: 1, type: 1, recall_cost: 1})
             .toArray();
 
-        const response = {
+        const response: DomainResponse = {
             domain: {
-                _id: domain._id,
+                _id: domain._id.toString(),
                 title: domain.title,
                 description: domain.description
             },
-            cards: cards
+            cards: cards.map(card =>({
+                _id: card._id.toString(),
+                title: card.title,
+                level: card.level,
+                type: card.type,
+                recall_cost: card.recall_cost,
+                description: card.description
+            }))
         };
 
         return NextResponse.json(response);
