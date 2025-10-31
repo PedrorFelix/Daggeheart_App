@@ -1,5 +1,13 @@
 import CardButton from "@/app/components/CardButton";
 
+const sections = [
+  {name: "Domains", href: "/domains", color: "#40454e", icon: "/aff_domains.svg", active: true},
+  {name: "Ancestry", href: "/ancestry", active: false},
+  {name: "Classes", href: "/classes", active: false},
+  {name: "Equipment", href: "/equipment", active: false},
+  {name: "Random Gen", href: "/random", active: false},
+];
+
 export default function HomePage() {
   return (
     <div className="p-4 sm:p-8 lg:p-20">
@@ -11,12 +19,18 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-10 justify-items-center">
-          {/* Static buttons - no color/icon provided */}
-          <CardButton name="Domains" href="/domains" color="#40454e" icon="/aff_domains.svg"/>
-          <CardButton name="Ancestry" href="/ancestry" />
-          <CardButton name="Classes" href="/" />
-          <CardButton name="Equipment" href="/" />
-          <CardButton name="Random Gen." href="/" />
+          {/* Card Buttons for all sections*/}
+
+          {sections.map((section) => (
+              <div key={section.name} className="relative w-full flex justify-center">
+                <CardButton
+                  name={section.active? section.name: section.name+'\nComing Soon'}
+                  href={section.active ? section.href : "#"}
+                  color={section.active? section.color: undefined}
+                  icon={section.active? section.icon: undefined}
+                />
+              </div>
+          ))}
         </div>
       </div>
     </div>

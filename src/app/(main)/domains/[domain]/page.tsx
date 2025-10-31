@@ -82,6 +82,7 @@ async function DomainContent({ domain }: { domain: string }) {
                 className="p-6 rounded-lg border-2 bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm hover:bg-white/50 dark:hover:bg-gray-800/80 hover:shadow-lg transition-all duration-200"
                 style={{
                   borderColor: domainData.baseColor,
+                  animation: 'fadeUp 0.5s'
                 }}
               >
                 <div className="flex justify-between items-start mb-3">
@@ -146,7 +147,7 @@ export default async function DomainPage({ params }: DomainPageProps) {
             className="inline-block px-6 py-3 text-white font-semibold rounded-lg"
             style={{ backgroundColor: domainData?.baseColor || '#6b7280' }}
           >
-            Back to Domains
+            ← Back to Domains
           </Link>
         </div>
 

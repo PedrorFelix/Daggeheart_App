@@ -31,6 +31,6 @@ export default function DomainLayout({
   }, [domainData, setColor, setLogo]);
 
   return (
-    {children}
+    <>{children}</>
   );
 }
