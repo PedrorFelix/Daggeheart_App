@@ -1,10 +1,9 @@
 'use client';
 
-import { useEffect, Suspense } from "react";
+import { useEffect } from "react";
 import { useBackground } from "@/app/contexts/backgroundContext";
 import { domains } from "@/app/lib/domains";
 import { useParams } from "next/navigation";
-import LoadingAnimation from "@/app/components/LoadingAnimation";
 
 export default function DomainLayout({
   children,
@@ -32,8 +31,6 @@ export default function DomainLayout({
   }, [domainData, setColor, setLogo]);
 
   return (
-    <Suspense fallback={<LoadingAnimation message="Loading Domain Cards ..."/>}>
-      {children}
-    </Suspense>
+    {children}
   );
 }

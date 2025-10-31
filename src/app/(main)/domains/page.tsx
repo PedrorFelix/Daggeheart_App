@@ -2,8 +2,6 @@
 
 import { domains } from "@/app/lib/domains";
 import Link from "next/link";
-import { Suspense } from "react";
-import LoadingAnimation from "@/app/components/LoadingAnimation";
 import CardButton from "@/app/components/CardButton";
 
 export default function Domain() {
@@ -29,7 +27,6 @@ export default function Domain() {
         </div>
 
         {/* Domain Grid */}
-        <Suspense fallback={<LoadingAnimation message="Loading Domain Cards ..."/>}>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-10 justify-items-center">
             {domains.map((domain) => (
               <CardButton
@@ -41,7 +38,6 @@ export default function Domain() {
               />
             ))}
           </div>
-        </Suspense>
 
         {/* Footer spacing */}
         <div className="h-8 sm:h-12 lg:h-16"></div>
