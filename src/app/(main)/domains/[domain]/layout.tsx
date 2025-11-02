@@ -5,11 +5,7 @@ import { useBackground } from "@/app/contexts/backgroundContext";
 import { domains } from "@/app/lib/domains";
 import { useParams } from "next/navigation";
 
-export default function DomainLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DomainLayout({children,}: {children: React.ReactNode;}) {
   const { setColor, setLogo } = useBackground();
   const params = useParams();
   const domain = params.domain as string;
@@ -30,7 +26,5 @@ export default function DomainLayout({
     };
   }, [domainData, setColor, setLogo]);
 
-  return (
-    <>{children}</>
-  );
+  return <>{children}</>;
 }

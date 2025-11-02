@@ -16,7 +16,7 @@ export default function ClientLayout({children}: {children: React.ReactNode}) {
                     right: '-50vw',
                     mask: `url(${logo}) no-repeat center`,
                     maskSize: 'contain',
-                    WebkitMask: 'url(/Svg_DhLogo.svg) no-repeat center',
+                    WebkitMask: `url(${logo}) no-repeat center`,
                     WebkitMaskSize: 'contain',
                     backgroundColor: color
                 }}
