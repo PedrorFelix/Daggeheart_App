@@ -28,13 +28,14 @@ export default function Domain() {
 
         {/* Domain Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-10 justify-items-center">
-            {domains.map((domain) => (
+            {domains.map((domain, index) => (
               <CardButton
               key = {domain.name}
               name = {domain.name}
               href = {`/domains/${domain.name}`}
               color = {domain.baseColor}
               icon = {domain.Icon}
+              index = {index}
               />
             ))}
           </div>

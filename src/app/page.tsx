@@ -21,13 +21,14 @@ export default function HomePage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-10 justify-items-center">
           {/* Card Buttons for all sections*/}
 
-          {sections.map((section) => (
+          {sections.map((section, index) => (
               <div key={section.name} className="relative w-full flex justify-center">
                 <CardButton
                   name={section.active? section.name: section.name+'\nComing Soon'}
                   href={section.active ? section.href : "#"}
                   color={section.active? section.color: undefined}
                   icon={section.active? section.icon: undefined}
+                  index={index}
                 />
               </div>
           ))}

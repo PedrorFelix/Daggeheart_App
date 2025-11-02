@@ -8,49 +8,40 @@ type CardButtonProps = {
   href: string;
   color?: string;
   icon?: string;
+  index: number;
 };
 
-export default function CardButton({ 
-  name, 
-  href, 
-  color, 
-  icon 
-}: CardButtonProps) {
+export default function CardButton( CardButtonProps: CardButtonProps) {
   const { setColor, setLogo } = useBackground();
   
-  // Determine if button should be dynamic based on provided props
-  const isDynamic = !!(color && icon);
-  
   // Default values for static buttons
-  const buttonColor = color || "#40454e";
-  const buttonIcon = icon || "/Svg_DhLogo.svg";
+  const buttonColor = CardButtonProps.color || "#40454e";
+  const buttonIcon = CardButtonProps.icon || "/Svg_DhLogo.svg";
 
   const handleHoverBackground = () => {
-    if (isDynamic) {
       setColor(buttonColor);
       setLogo(buttonIcon);
-    }
+
   };
 
   const handleResetBackground = () => {
-    if (isDynamic) {
       setColor("#ffffff");
       setLogo("/Svg_DhLogo.svg");
-    }
   };
 
   return (
     <Link
-      key={name}
-      href={href}
+      key={CardButtonProps.name}
+      href={CardButtonProps.href}
       className="group relative rounded-4xl border border-solid transition-all duration-200 ease-in-out flex flex-col items-center justify-center bg-gradient-to-br backdrop-blur-sm hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-white/15 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full max-w-[1080px] h-[240px] sm:h-[280px] lg:h-[320px] hover:bg-white dark:hover:bg-white hover:border-opacity-75"
       style={{
         backgroundImage: `linear-gradient(to bottom right, ${buttonColor}20, ${buttonColor}20)`,
-        borderColor: buttonColor
+        borderColor: buttonColor,
+        animation: `fadeUp 0.5s ${CardButtonProps.index * 0.05}s both`
       }}
       onMouseEnter={handleHoverBackground}
       onMouseLeave={handleResetBackground}
-      aria-label={`Explore ${name}`}
+      aria-label={`Explore ${CardButtonProps.name}`}
     >
       <div className="p-4 sm:p-6 lg:p-8 w-full h-full flex flex-col items-center justify-center">
         <div className="flex-1 flex items-center justify-center mb-4 sm:mb-6 relative">
@@ -82,7 +73,7 @@ export default function CardButton({
         </div>
         
         <h2 className="font-bold text-lg sm:text-xl lg:text-2xl text-center group-hover:text-gray-900 dark:group-hover:text-gray-900 transition-colors">
-          {name}
+          {CardButtonProps.name}
         </h2>
       </div>
     </Link>

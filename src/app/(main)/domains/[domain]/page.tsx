@@ -30,7 +30,7 @@ type DomainResponse = {
 async function DomainContent({ domain }: { domain: string }) {
   const domainData = domains.find((d) => d.name === domain);
 
-  if (!domainData) {
+  if (!domainData) { //Domain does not exist
     notFound();
   }
 
@@ -76,13 +76,13 @@ async function DomainContent({ domain }: { domain: string }) {
           </h2>
           
           <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {data.cards.map((card) => (
+            {data.cards.map((card, index) => (
               <div
                 key={card._id}
-                className="p-6 rounded-lg border-2 bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm hover:bg-white/50 dark:hover:bg-gray-800/80 hover:shadow-lg transition-all duration-200"
+                className="p-6 rounded-lg border-2  bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm hover:bg-white/50 dark:hover:bg-gray-800/80 hover:shadow-lg transition-all duration-200"
                 style={{
                   borderColor: domainData.baseColor,
-                  animation: 'fadeUp 0.5s'
+                  animation: `fadeUp 0.5s ${index * 0.05}s both`
                 }}
               >
                 <div className="flex justify-between items-start mb-3">
