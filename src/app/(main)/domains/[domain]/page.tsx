@@ -3,8 +3,8 @@ import { domains } from "@/app/lib/domains";
 import type { DomainResponse } from "@/app/types/database";
 import { Suspense } from "react";
 import LoadingAnimation from "@/app/components/LoadingAnimation";
+import SearchInput from "@/app/components/SearchInput";
 import Link from "next/link";
-
 
 type DomainPageProps = {
   params: Promise<{
@@ -30,56 +30,6 @@ async function fetchDomainData(domainName: string): Promise<DomainResponse> {
   }
 
   return res.json(); //return response as json
-}
-
-export default async function DomainPage({ params }: DomainPageProps) {
-  const { domain } = await params;
-  const domainData = domains.find((d) => d.name === domain);
-
-  if (!domainData) {
-    notFound();
-  }
-
-  let data: DomainResponse;
-  
-  try {
-    data = await fetchDomainData(domainData.name);
-  } catch (error) {
-    console.error("Error fetching domain data:", error);
-    
-    return (
-      <div className="p-4 sm:p-8 lg:p-20">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <BackButton color={domainData.baseColor} />
-          <ErrorMessage />
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="p-4 sm:p-8 lg:p-20">
-      <div className="max-w-7xl mx-auto relative z-10">
-        
-        <DomainHeader 
-          name={domainData.name}
-          description={data.domain.description}
-          color={domainData.baseColor}
-        />
-
-        <BackButton color={domainData.baseColor} />
-
-        <Suspense fallback={<LoadingAnimation message="Loading domain data..." />}>
-          <DomainCardGrid 
-            cards={data.cards}
-            color={domainData.baseColor}
-          />
-        </Suspense>
-
-        <div className="h-8 sm:h-12 lg:h-16" />
-      </div>
-    </div>
-  );
 }
 
 function BackButton({ color }: { color: string }) {
@@ -116,7 +66,8 @@ function DomainHeader({ name, description, color }: {
   );
 }
 
-function DomainCardGrid({ cards, color }: { 
+function DomainCardGrid({ domain, cards, color }: { 
+  domain: string;
   cards: DomainResponse['cards']; 
   color: string;
 }) {
@@ -129,6 +80,8 @@ function DomainCardGrid({ cards, color }: {
         Domain Cards
       </h2>
       
+      <SearchInput searchName={domain} color={color} placeholderText="Search "/>
+
       <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
         {cards.map((card, index) => (
           <DomainCard 
@@ -198,6 +151,57 @@ function ErrorMessage() {
       <p className="text-lg text-gray-300 mb-4">
         Failed to load domain data. Please try again later.
       </p>
+    </div>
+  );
+}
+
+export default async function DomainPage({ params }: DomainPageProps) {
+  const { domain } = await params;
+  const domainData = domains.find((d) => d.name === domain);
+
+  if (!domainData) {
+    notFound();
+  }
+
+  let data: DomainResponse;
+  
+  try {
+    data = await fetchDomainData(domainData.name);
+  } catch (error) {
+    console.error("Error fetching domain data:", error);
+    
+    return (
+      <div className="p-4 sm:p-8 lg:p-20">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <BackButton color={domainData.baseColor} />
+          <ErrorMessage />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-4 sm:p-8 lg:p-20">
+      <div className="max-w-7xl mx-auto relative z-10">
+        
+        <DomainHeader 
+          name={domainData.name}
+          description={data.domain.description}
+          color={domainData.baseColor}
+        />
+
+        <BackButton color={domainData.baseColor} />
+
+        <Suspense fallback={<LoadingAnimation message="Loading domain data..." />}>
+          <DomainCardGrid 
+            domain={domainData.name}
+            cards={data.cards}
+            color={domainData.baseColor}
+          />
+        </Suspense>
+
+        <div className="h-8 sm:h-12 lg:h-16" />
+      </div>
     </div>
   );
 }
