@@ -33,12 +33,16 @@ async function fetchDomainData(domainName: string): Promise<DomainResponse> {
 }
 
 function BackButton({ color }: { color: string }) {
+  let textColor = "#FFFFFF";
+  if(color === "#FFFFFF"){ //if pure white
+    textColor="#101828";
+  }
   return (
     <div className="mb-8">
       <Link 
         href="/domains"
-        className="inline-block px-6 py-3 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity"
-        style={{ backgroundColor: color }}
+        className='inline-block px-6 py-3 font-semibold rounded-lg hover:opacity-90 transition-opacity'
+        style={{ backgroundColor: color,  color: textColor}}
       >
         ← Back to Domains
       </Link>

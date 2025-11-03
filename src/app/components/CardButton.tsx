@@ -15,13 +15,20 @@ export default function CardButton( CardButtonProps: CardButtonProps) {
   const { setColor, setLogo } = useBackground();
   
   // Default values for static buttons
-  const buttonColor = CardButtonProps.color || "#40454e";
+  let buttonColor = CardButtonProps.color || "#40454e";
   const buttonIcon = CardButtonProps.icon || "/Svg_DhLogo.svg";
 
-  const handleHoverBackground = () => {
-      setColor(buttonColor);
-      setLogo(buttonIcon);
+  if(CardButtonProps.color ==="#FFFFFF"){
+    buttonColor = "#101828"
+  }
 
+  const handleHoverBackground = () => {
+      if(buttonColor === "#101828"){
+        setColor("#ffffff");
+      }else{
+        setColor(buttonColor);
+      }
+      setLogo(buttonIcon);
   };
 
   const handleResetBackground = () => {
@@ -35,7 +42,7 @@ export default function CardButton( CardButtonProps: CardButtonProps) {
       href={CardButtonProps.href}
       className="group relative rounded-4xl border border-solid transition-all duration-200 ease-in-out flex flex-col items-center justify-center bg-gradient-to-br backdrop-blur-sm hover:shadow-xl hover:shadow-black/15 dark:hover:shadow-white/15 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 w-full max-w-[1080px] h-[240px] sm:h-[280px] lg:h-[320px] hover:bg-white dark:hover:bg-white hover:border-opacity-75"
       style={{
-        backgroundImage: `linear-gradient(to bottom right, ${buttonColor}20, ${buttonColor}20)`,
+        backgroundImage: `linear-gradient(to bottom right, ${buttonColor}50, ${buttonColor}20)`,
         borderColor: buttonColor,
         animation: `fadeUp 0.5s ${CardButtonProps.index * 0.05}s both`
       }}
