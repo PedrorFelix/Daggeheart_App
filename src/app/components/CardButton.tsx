@@ -11,23 +11,19 @@ type CardButtonProps = {
   index: number;
 };
 
+export function handleWhiteBaseColor(color: string): string {
+  return color === "#FFFFFF" ? "#101828" : color ;
+}
+
 export default function CardButton( CardButtonProps: CardButtonProps) {
   const { setColor, setLogo } = useBackground();
   
   // Default values for static buttons
-  let buttonColor = CardButtonProps.color || "#40454e";
+  const buttonColor = CardButtonProps.color || "#40454e";
   const buttonIcon = CardButtonProps.icon || "/Svg_DhLogo.svg";
 
-  if(CardButtonProps.color ==="#FFFFFF"){
-    buttonColor = "#101828"
-  }
-
   const handleHoverBackground = () => {
-      if(buttonColor === "#101828"){
-        setColor("#ffffff");
-      }else{
-        setColor(buttonColor);
-      }
+      setColor(buttonColor);
       setLogo(buttonIcon);
   };
 
@@ -73,7 +69,7 @@ export default function CardButton( CardButtonProps: CardButtonProps) {
               maskSize: "contain",
               WebkitMask: `url(${buttonIcon}) no-repeat center`,
               WebkitMaskSize: "contain",
-              backgroundColor: buttonColor,
+              backgroundColor: handleWhiteBaseColor(buttonColor),
               transition: "all 0.2s ease-in-out"
             }}
           />
