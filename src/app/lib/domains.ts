@@ -14,4 +14,5 @@ export const domains: Domain[] = [
   { Icon: "/Svg_Sage.svg", name: "Sage", baseColor: "#059669" },
   { Icon: "/Svg_Splendor.svg", name: "Splendor", baseColor: "#d97706" },
   { Icon: "/Svg_Valor.svg", name: "Valor", baseColor: "#ea580c" },
+  { Icon: "/aff_domains.svg", name: "All", baseColor: "#FFFFFF" },
 ];

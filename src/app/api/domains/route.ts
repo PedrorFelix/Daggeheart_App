@@ -18,7 +18,29 @@ export async function GET (request: Request) {
         // Search for the specific domain
         const domain = await db.collection("domains").findOne({title: domainName});
 
-        if(!domain){
+        if(domainName === "All"){
+            const allCards = await db.collection("abilities").find({})
+            .project({title: 1, description: 1, level: 1, type: 1, recall_cost: 1})
+            .toArray();
+
+            const allDomainsResponse: DomainResponse = {
+                domain: {
+                    _id: "All",
+                    title:"All Domains",
+                    description: "Collection of all domain cards"
+                },
+                cards: allCards.map(card=>({
+                    _id: card._id.toString(),
+                    title: card.title,
+                    level: card.level,
+                    type: card.type,
+                    recall_cost: card.recall_cost,
+                    description: card.description
+                }))
+            };
+
+            return NextResponse.json(allDomainsResponse);
+        }else if(!domain){
             console.log("Domain not found");
             return NextResponse.json({
                 error: "Domain Not Found"
