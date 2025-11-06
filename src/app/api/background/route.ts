@@ -34,7 +34,9 @@ export async function GET(request: Request){
                 description: background.description,
                 feature: background.feature
             }
-        }
+        };
+
+        return NextResponse.json(response);
 
     }catch(error){
         console.error("=== API Route Error ===");

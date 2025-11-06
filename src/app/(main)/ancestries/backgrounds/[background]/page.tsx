@@ -88,7 +88,7 @@ function FeatureCard({feature, color }: {feature: { name: string; description:st
 }
 
 function FeatureSection({ feature, color }: { 
-  features: { name: string; description: string }[]; 
+  feature: { name: string; description: string }; 
   color: string;
 }) {
   return (
@@ -156,6 +156,13 @@ export default async function BackgroundPage({ params }: BackgroundPageProps) {
           description={data.background.description}
           color={backgroundData.color}
         />
+
+        <Suspense fallback={<LoadingAnimation message="Loading background data..."/>}>
+          <FeatureSection
+            feature={data.background.feature}
+            color= {backgroundData.color}
+          />
+        </Suspense>
 
         <BackButton color={backgroundData.color} />
 
