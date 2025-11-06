@@ -8,7 +8,7 @@ import { useParams } from "next/navigation";
 export default function BackgroundLayout( {children}: {children: React.ReactNode}){
     const { setColor, setLogo } = useBackground();
     const params = useParams();
-    const backgroundName = params.backgrounds as string;
+    const backgroundName = params.background as string;
     const backgroundData = backgrounds.find((s) => s.name === backgroundName);
 
     useEffect(()=>{

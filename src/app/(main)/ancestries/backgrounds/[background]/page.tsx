@@ -11,7 +11,7 @@ type BackgroundPageProps = {
     }>;
 };
 
-async function fetchBackgroundData(backgroundName: string): Promise<BackgroundPageProps> {
+async function fetchBackgroundData(backgroundName: string): Promise<BackgroundResponse> {
     const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/background?background=${backgroundName}`,
         {
@@ -97,7 +97,7 @@ function FeatureSection({ feature, color }: {
         className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8"
         style={{ color }}
       >
-        Species Features
+        Background Feature
       </h2>
       
       <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
