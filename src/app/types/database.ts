@@ -18,4 +18,15 @@ export interface DomainResponse {
     cards: DomainCard[];
 }
 
+export interface feature {
+    name: string;
+    description: string;
+}
+
+export interface Species {
+    _id: string;
+    name: string;
+    description: string;
+    Features : [main: feature, secondary: feature];
+}
 //Add more types has more features come online

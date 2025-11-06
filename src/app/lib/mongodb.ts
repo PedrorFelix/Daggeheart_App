@@ -29,7 +29,7 @@ export async function connectToDatabase(): Promise<{client: MongoClient; db: Db}
         const client = new MongoClient(process.env.MONGODB_URI);
         await client.connect();
         console.log("MongoDB client connected");
-        const db = client.db("dh_domains");
+        const db = client.db("DH_database");
         await db.command({ ping: 1 });
         
         // Cache the connection

@@ -1,8 +1,8 @@
 import CardButton from "@/app/components/CardButton";
 
 const sections = [
-  {name: "Domains", href: "/domains", color: "#40454e", icon: "/aff_domains.svg", active: true},
-  {name: "Ancestry", href: "/ancestry", active: false},
+  {name: "Domains", href: "/domains", color: "#FFFFFF", icon: "/aff_domains.svg", active: true},
+  {name: "Ancestry", href: "/ancestries", color: "#FFFFFF", icon: "/aff_species.svg", active: true},
   {name: "Classes", href: "/classes", active: false},
   {name: "Equipment", href: "/equipment", active: false},
   {name: "Random Gen", href: "/random", active: false},

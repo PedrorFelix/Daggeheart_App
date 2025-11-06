@@ -184,6 +184,10 @@ export default async function DomainPage({ params }: DomainPageProps) {
     );
   }
 
+  if(domainData.baseColor === "#000000"){
+    domainData.baseColor = "#FFFFFF"
+  }
+
   return (
     <div className="p-4 sm:p-8 lg:p-20">
       <div className="max-w-7xl mx-auto relative z-10">
