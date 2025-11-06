@@ -33,4 +33,19 @@ export interface Species {
 export interface SpeciesResponse {
     species: Species;
 }
-//Add more types has more features come online
+
+export interface Background {
+    _id: string;
+    name: string;
+    description: string;
+    feature : feature;
+}
+
+export interface BackgroundResponse {
+    background: Background;
+}
+
+export interface Ancestry {
+    species: Species;
+    background: Background;
+}

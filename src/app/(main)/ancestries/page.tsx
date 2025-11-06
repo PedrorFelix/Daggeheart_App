@@ -5,7 +5,7 @@ import CardButton from "@/app/components/CardButton";
 
 const sections = [
   {name: "Species", href: "/species", color: "#FFFFFF", icon: "/aff_species.svg"},
-  {name: "Backgrounds", href: "/background", color: "#FFFFFF", icon: "/Svg_DhLogo.svg"}
+  {name: "Backgrounds", href: "/backgrounds", color: "#FFFFFF", icon: "/Svg_DhLogo.svg"}
 ];
 
 export default function Ancestry() {
