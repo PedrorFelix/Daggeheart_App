@@ -14,7 +14,7 @@ export async function GET(request: Request){
 
         const { db } = await connectToDatabase();
 
-        const background = await db.collection("background").findOne({name: backgroundName});
+        const background = await db.collection("backgrounds").findOne({name: backgroundName});
 
         if(!background){
             console.log("Background not found");

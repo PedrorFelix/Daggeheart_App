@@ -12,6 +12,6 @@ export const backgrounds: Background[] = [
     {name: "Loreborne", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
     {name: "Seaborne", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
     {name: "Underborne", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
-    {name: "Ridgebornee", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
+    {name: "Ridgeborne", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
     {name: "Orderborne", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"}
 ];

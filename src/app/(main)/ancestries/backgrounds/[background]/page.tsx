@@ -88,7 +88,7 @@ function FeatureCard({feature, color }: {feature: { name: string; description:st
 }
 
 function FeatureSection({ feature, color }: { 
-  feature: { name: string; description: string }; 
+  feature: { name: string; description: string }[]; 
   color: string;
 }) {
   return (
@@ -101,11 +101,12 @@ function FeatureSection({ feature, color }: {
       </h2>
       
       <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
-          <FeatureCard 
-            key={feature.name}
+          {feature.map((feature, index) => (
+          <FeatureCard
+            key={index}
             feature={feature}
             color={color}
-          />
+          />))}
       </div>
     </section>
   );
@@ -157,6 +158,8 @@ export default async function BackgroundPage({ params }: BackgroundPageProps) {
           color={backgroundData.color}
         />
 
+        <BackButton color={backgroundData.color} />
+        
         <Suspense fallback={<LoadingAnimation message="Loading background data..."/>}>
           <FeatureSection
             feature={data.background.feature}
@@ -164,7 +167,7 @@ export default async function BackgroundPage({ params }: BackgroundPageProps) {
           />
         </Suspense>
 
-        <BackButton color={backgroundData.color} />
+        
 
         <div className="h-8 sm:h-12 lg:h-16" />
       </div>

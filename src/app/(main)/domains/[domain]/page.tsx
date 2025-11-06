@@ -83,8 +83,6 @@ function DomainCardGrid({ domain, cards, color }: {
       >
         Domain Cards
       </h2>
-      
-      <SearchInput searchName={domain} color={color} placeholderText="Search "/>
 
       <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
         {cards.map((card, index) => (
