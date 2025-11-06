@@ -29,4 +29,8 @@ export interface Species {
     description: string;
     Features : [main: feature, secondary: feature];
 }
+
+export interface SpeciesResponse {
+    species: Species;
+}
 //Add more types has more features come online

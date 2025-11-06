@@ -15,4 +15,12 @@ export const species: Species[] = [
   {name: "Human", icon: "/Svg_Human.svg", color: "#FFFFFF"},
   {name: "Ribbet", icon: "/Svg_Ribbet.svg", color: "#FFFFFF"},
   {name: "Dwarf", icon: "/Svg_Dwarf.svg", color: "#FFFFFF"},
+  {name: "Simiah", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
+  {name: "Faun", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
+  {name: "Firbolg", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
+  {name: "Fungril", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
+  {name: "Drakona", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
+  {name: "Katari", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
+  {name: "Infernis", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
+  {name: "Giant", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
 ];
