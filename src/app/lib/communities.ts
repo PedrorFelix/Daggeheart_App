@@ -1,10 +1,10 @@
-export type Background = {
+export type Community = {
     name: string,
     icon: string,
     color: string
 }
 
-export const backgrounds: Background[] = [
+export const communities: Community[] = [
     {name: "Slyborne", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
     {name: "Highborne", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},
     {name: "Wanderborne", icon: "/Svg_DhLogo.svg", color: "#FFFFFF"},

@@ -23,29 +23,29 @@ export interface feature {
     description: string;
 }
 
-export interface Species {
+export interface Ancestry {
     _id: string;
     name: string;
     description: string;
     Features : [main: feature, secondary: feature];
 }
 
-export interface SpeciesResponse {
-    species: Species;
+export interface AncestryResponse {
+    ancestry: Ancestry;
 }
 
-export interface Background {
+export interface Community {
     _id: string;
     name: string;
     description: string;
     feature : feature;
 }
 
-export interface BackgroundResponse {
-    background: Background;
+export interface CommunityResponse {
+    community: Community;
 }
 
-export interface Ancestry {
-    species: Species;
-    background: Background;
+export interface Heritage {
+    ancestry: Ancestry;
+    community: Community;
 }

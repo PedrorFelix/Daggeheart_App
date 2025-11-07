@@ -1,10 +1,14 @@
 "use client";
 
-import { domains } from "@/app/lib/domains";
 import Link from "next/link";
 import CardButton from "@/app/components/CardButton";
 
-export default function Domain() {
+const sections = [
+    {name: "Ancestries", href: "/ancestries", color: "#FFFFFF", icon: "/aff_species.svg"},
+    {name: "Communities", href: "/communities", color: "#FFFFFF", icon: "/Svg_DhLogo.svg"},
+];
+
+export default function Ancestry() {
     return (
         <div className="p-4 sm:p-8 lg:p-20">
             <main className="max-w-7xl mx-auto relative z-10">
@@ -25,17 +29,22 @@ export default function Domain() {
                     </Link>
                 </div>
 
-                {/* Domain Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-10 justify-items-center">
-                    {domains.map((domain, index) => (
-                        <CardButton
-                            key={domain.name}
-                            name={domain.name}
-                            href={`/domains/${domain.name}`}
-                            color={domain.baseColor}
-                            icon={domain.Icon}
-                            index={index}
-                        />
+                    {/* Card Buttons for all sections*/}
+
+                    {sections.map((section, index) => (
+                        <div
+                            key={section.name}
+                            className="relative w-full flex justify-center"
+                        >
+                            <CardButton
+                                name={section.name}
+                                href={`/heritages${section.href}`}
+                                color={section.color}
+                                icon={section.icon}
+                                index={index}
+                            />
+                        </div>
                     ))}
                 </div>
 
