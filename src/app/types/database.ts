@@ -60,6 +60,7 @@ export interface InventoryItem {
 }
 
 export interface Class {
+    _id: string;
     name: string;
     description: string;
     domains : [string, string];
@@ -71,6 +72,10 @@ export interface Class {
     questions: [string, string, string];
     connections: [string, string, string];
     classItem: [string, string];
+}
+
+export interface ClassResponse {
+    class: Class;
 }
 
 export interface Subclass {

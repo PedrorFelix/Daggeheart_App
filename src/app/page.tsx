@@ -3,7 +3,7 @@ import CardButton from "@/app/components/CardButton";
 const sections = [
     {name: "Domains", href: "/domains", color: "#FFFFFF", icon: "/aff_domains.svg", active: true},
     {name: "Heritage", href: "/heritages", color: "#FFFFFF", icon: "/aff_species.svg", active: true},
-    {name: "Classes", href: "/classes", active: true},
+    {name: "Classes", href: "/classes", color: "#FFFFFF", active: true},
     {name: "Character Creation", href: "/random", active: false},
     {name: "Rule Guide", href: "/rules", active: false},
     {name: "Equipment", href: "/equipment", active: false},

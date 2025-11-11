@@ -19,7 +19,7 @@ export async function GET(request: Request) {
             console.log("Ancestry not found");
             return NextResponse.json({
                 error: "Ancestry Not Found"
-            }, { status: 404 });
+            },{ status: 404 });
         }
 
         console.log("Ancestry found:", {
