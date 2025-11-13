@@ -1,4 +1,5 @@
 import CardButton from "@/app/components/CardButton";
+import { BasicPageHeader } from "./components/PageHeader";
 
 const sections = [
     {name: "Domains", href: "/domains", color: "#FFFFFF", icon: "/aff_domains.svg", active: true},
@@ -13,15 +14,8 @@ export default function HomePage() {
     return (
         <div className="p-4 sm:p-8 lg:p-20">
             <div className="max-w-7xl mx-auto">
-                <div className="text-left mb-8 sm:mb-12 lg:mb-16">
-                    <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6 text-white">
-                        Daggerheart Quick Guide
-                    </h1>
-                </div>
-        
+                <BasicPageHeader/>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-10 justify-items-center">
-                    {/* Card Buttons for all sections*/}
-          
                     {sections.map((section, index) => (
                           <div key={section.name} className="relative w-full flex justify-center">
                               <CardButton

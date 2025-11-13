@@ -1,28 +1,20 @@
 "use client";
 
 import { domains } from "@/app/lib/domains";
-import Link from "next/link";
+import ReturnButton from "@/app/components/ReturnButton";
 import CardButton from "@/app/components/CardButton";
+import { BasicPageHeader } from "@/app/components/PageHeader";
 
 export default function Domain() {
     return (
         <div className="p-4 sm:p-8 lg:p-20">
             <main className="max-w-7xl mx-auto relative z-10">
                 {/* Header Section */}
-                <div className="text-left mb-8 sm:mb-12 lg:mb-16">
-                    <h1 className="font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6 text-white">
-                        Daggerheart Quick Guide
-                    </h1>
-                </div>
+                <BasicPageHeader/>
 
                 {/* Navigation Link */}
                 <div className="mb-8">
-                    <Link
-                        href="/"
-                        className="inline-block px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg"
-                    >
-                        Back
-                    </Link>
+                    <ReturnButton color="#FFFFFF" destination="/" direction="Main Page"/>
                 </div>
 
                 {/* Domain Grid */}

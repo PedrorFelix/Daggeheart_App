@@ -3,7 +3,9 @@ import { domains } from "@/app/lib/domains";
 import type { DomainResponse } from "@/app/types/database";
 import { Suspense } from "react";
 import LoadingAnimation from "@/app/components/LoadingAnimation";
-import Link from "next/link";
+import { PageHeader } from "@/app/components/PageHeader";
+import ReturnButton from "@/app/components/ReturnButton";
+import ErrorMessage from "@/app/components/ErrorMessage";
 
 type DomainPageProps = {
     params: Promise<{
@@ -31,55 +33,10 @@ async function fetchDomainData(domainName: string): Promise<DomainResponse> {
     return res.json(); //return response as json
 }
 
-function BackButton({ color }: { color: string }) {
-    let textColor = "#FFFFFF";
-    if (color === "#FFFFFF") {
-        //if pure white
-        textColor = "#101828";
-    }
-    return (
-        <div className="mb-8">
-            <Link
-                href="/domains"
-                className="inline-block px-6 py-3 font-semibold rounded-lg hover:opacity-90 transition-opacity"
-                style={{ backgroundColor: color, color: textColor }}
-            >
-                ← Back to Domains
-            </Link>
-        </div>
-    );
-}
-
-function DomainHeader({
-    name,
-    description,
-    color,
-}: {
-    name: string;
-    description: string;
-    color: string;
-}) {
-    return (
-        <header className="text-left mb-8 sm:mb-12 lg:mb-16">
-            <h1
-                className="font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6"
-                style={{ color }}
-            >
-                {name}
-            </h1>
-            <p className="text-lg text-gray-300 max-w-4xl leading-relaxed">
-                {description}
-            </p>
-        </header>
-    );
-}
-
 function DomainCardGrid({
-    domain,
     cards,
     color,
 }: {
-    domain: string;
     cards: DomainResponse["cards"];
     color: string;
 }) {
@@ -146,17 +103,6 @@ function DomainCard({
     );
 }
 
-function ErrorMessage() {
-    return (
-        <div className="text-center py-12">
-            <h1 className="text-4xl font-bold mb-4 text-red-600">Error</h1>
-            <p className="text-lg text-gray-300 mb-4">
-                Failed to load domain data. Please try again later.
-            </p>
-        </div>
-    );
-}
-
 export default async function DomainPage({ params }: DomainPageProps) {
     const { domain } = await params;
     const domainData = domains.find((d) => d.name === domain);
@@ -175,7 +121,7 @@ export default async function DomainPage({ params }: DomainPageProps) {
         return (
             <div className="p-4 sm:p-8 lg:p-20">
                 <div className="max-w-7xl mx-auto relative z-10">
-                    <BackButton color={domainData.baseColor} />
+                    <ReturnButton color= {domainData.baseColor} destination="/domains" direction="Domains"/>
                     <ErrorMessage />
                 </div>
             </div>
@@ -189,24 +135,16 @@ export default async function DomainPage({ params }: DomainPageProps) {
     return (
         <div className="p-4 sm:p-8 lg:p-20">
             <div className="max-w-7xl mx-auto relative z-10">
-                <DomainHeader
+                <PageHeader
                     name={domainData.name}
                     description={data.domain.description}
                     color={domainData.baseColor}
                 />
 
-                <BackButton color={domainData.baseColor} />
-
-                <Suspense
-                    fallback={
-                        <LoadingAnimation message="Loading domain data..." />
-                    }
-                >
-                    <DomainCardGrid
-                        domain={domainData.name}
-                        cards={data.cards}
-                        color={domainData.baseColor}
-                    />
+                <ReturnButton color= {domainData.baseColor} destination="/domains" direction="Domains"/>
+                
+                <Suspense fallback={<LoadingAnimation message="Loading domain data..." /> }>
+                    <DomainCardGrid cards={data.cards} color={domainData.baseColor}/>
                 </Suspense>
 
                 <div className="h-8 sm:h-12 lg:h-16" />
