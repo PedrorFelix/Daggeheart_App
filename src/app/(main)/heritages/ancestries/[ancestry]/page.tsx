@@ -6,7 +6,7 @@ import LoadingAnimation from "@/app/components/LoadingAnimation";
 import { PageHeader } from "@/app/components/PageHeader";
 import ReturnButton from "@/app/components/ReturnButton";
 import ErrorMessage from "@/app/components/ErrorMessage";
-import FeaturesGrid from "@/app/components/FeatureGrid";
+import  { FeaturesGrid } from "@/app/components/FeatureGrid";
  
 type AncestryPageProps = {
     params: Promise<{
