@@ -7,8 +7,7 @@ import { PageHeader } from "@/app/components/PageHeader";
 import ReturnButton from "@/app/components/ReturnButton";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import {LinkedIconSquare, InfoSquare} from "@/app/components/InfoSquares";
-import { FeatureCard } from "@/app/components/FeatureCard";
-import { FeaturesGrid } from "@/app/components/FeatureGrid";
+import { FeaturesGrid, FeatureCard } from "@/app/components/FeatureGrid";
 
 type ClassPageProps = {
     params: Promise<{

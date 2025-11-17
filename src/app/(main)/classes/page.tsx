@@ -1,7 +1,7 @@
 "use client";
 
 import { classes } from "@/app/lib/classes";
-import CardButton from "@/app/components/Classes_CardButton";
+import { Class_CardButton } from "@/app/components/CardButton";
 import { BasicPageHeader } from "@/app/components/PageHeader";
 import ReturnButton from "@/app/components/ReturnButton";
 
@@ -13,7 +13,7 @@ export default function Class(){
                 <ReturnButton color="#FFFFFF" destination="/" direction="Main Page"/>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-10 justify-items-center">
                     {classes.map((domain, index) => (
-                        <CardButton
+                        <Class_CardButton
                             key={domain.name}
                             name={domain.name}
                             href={`/classes/${domain.name}`}
