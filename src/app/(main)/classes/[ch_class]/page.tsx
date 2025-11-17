@@ -7,8 +7,8 @@ import { PageHeader } from "@/app/components/PageHeader";
 import ReturnButton from "@/app/components/ReturnButton";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import {LinkedIconSquare, InfoSquare} from "@/app/components/InfoSquares";
-import { HopeFeatureCard } from "@/app/components/FeatureCard";
-import { ClassFeatureGrid } from "@/app/components/FeatureGrid";
+import { FeatureCard } from "@/app/components/FeatureCard";
+import { FeaturesGrid } from "@/app/components/FeatureGrid";
 
 type ClassPageProps = {
     params: Promise<{
@@ -124,7 +124,6 @@ export default async function ClassPage({ params }: ClassPageProps) {
         );
     }
 
-
     return (
         <div className="p-4 sm:p-8 lg:p-20">
             <div className="max-w-7xl mx-auto relative z-10">
@@ -134,8 +133,8 @@ export default async function ClassPage({ params }: ClassPageProps) {
 
                 <Suspense fallback={<LoadingAnimation message="Loading class data..." />}>
                     <ClassInfoSection classData={data.class} colors={[classInfo.domains[0].baseColor,classInfo.domains[1].baseColor]}/>
-                    <HopeFeatureCard name= {classInfo.name} feature= {data.class.hopeFeature} color= {classInfo.domains[1].baseColor}/>
-                    <ClassFeatureGrid name= {classInfo.name} features={data.class.classFeature} color = {classInfo.domains[1].baseColor} />
+                    <FeatureCard  feature= {data.class.hopeFeature[0]} color= {classInfo.domains[1].baseColor} />
+                    <FeaturesGrid  features={data.class.classFeature} color = {classInfo.domains[1].baseColor} />
                 </Suspense>
 
                 <div className="h-8 sm:h-12 lg:h-16" />

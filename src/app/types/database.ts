@@ -66,8 +66,8 @@ export interface Class {
     domains : [string, string];
     evasion: number;
     hp: number;
-    hopeFeature: Feature;
-    classFeature: Feature | [Feature, Feature]| [Feature, Feature, Feature];
+    hopeFeature: [Feature];
+    classFeature: [Feature] | [Feature, Feature] | [Feature, Feature, Feature];
     subclasses: [string, string];
     questions: [string, string, string];
     connections: [string, string, string];
