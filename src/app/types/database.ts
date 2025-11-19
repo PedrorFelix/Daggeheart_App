@@ -79,12 +79,18 @@ export interface ClassResponse {
 }
 
 export interface Subclass {
+    _id: string;
+    name: string;
     class: string;
     description: string;
     spellcastTrait?: string;
-    foundationFeature: Feature | [Feature, Feature];
-    specializationFeature: Feature | [Feature, Feature];
-    masteryFeature: Feature | [Feature, Feature];
+    foundationFeature: [Feature] | [Feature, Feature];
+    specializationFeature: [Feature] | [Feature, Feature];
+    masteryFeature: [Feature] | [Feature, Feature];
+}
+
+export interface SubclassResponse{
+    subclass: Subclass;
 }
 
 export interface Character {

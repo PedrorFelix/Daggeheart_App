@@ -6,7 +6,7 @@ import LoadingAnimation from "@/app/components/LoadingAnimation";
 import { PageHeader } from "@/app/components/PageHeader";
 import ReturnButton from "@/app/components/ReturnButton";
 import ErrorMessage from "@/app/components/ErrorMessage";
-import {LinkedIconSquare, InfoSquare} from "@/app/components/InfoSquares";
+import {LinkedIconSquare, InfoSquare, LinkedInfoSquare} from "@/app/components/InfoSquares";
 import { FeaturesGrid, FeatureCard } from "@/app/components/FeatureGrid";
 
 type ClassPageProps = {
@@ -86,7 +86,7 @@ function ClassInfoSection({
                     </h3>
                     <div className="grid grid-cols-2 justify-items-center">
                         {classData.subclasses.map((sub, index) => (
-                        <InfoSquare key= {sub} info={[' ', sub]} color={colors[index]}/>
+                        <LinkedInfoSquare key= {sub} info={[' ', sub]} color={colors[index]} destination={`/classes/${classData.name}/${sub}`}/>
                         ))}
                     </div>
                 </article>
@@ -132,8 +132,38 @@ export default async function ClassPage({ params }: ClassPageProps) {
 
                 <Suspense fallback={<LoadingAnimation message="Loading class data..." />}>
                     <ClassInfoSection classData={data.class} colors={[classInfo.domains[0].baseColor,classInfo.domains[1].baseColor]}/>
-                    <FeatureCard  feature= {data.class.hopeFeature[0]} color= {classInfo.domains[1].baseColor} />
+
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8" style = {{color: correctedColor}}> Hope Feature </h2>
+                    <FeatureCard feature= {data.class.hopeFeature[0]} color= {classInfo.domains[1].baseColor} />
+
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 mt-6 sm_mt-8" style = {{color: correctedColor}}> Class Features</h2>
                     <FeaturesGrid  features={data.class.classFeature} color = {classInfo.domains[1].baseColor} />
+
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8" style = {{color: correctedColor}}>Personal Items</h2>
+                    <div className="grid grid-cols-3 text-center mb-6 sm:mb-8">
+                        <p className="p-6 rounded-lg border-2 bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm hover:bg-white/50 dark:hover:bg-gray-800/80 hover:shadow-lg transition-all duration-200">{data.class.classItem[0]}</p>
+                        <p className="p-6" style= {{color: correctedColor}}>OR</p>
+                        <p className="p-6 rounded-lg border-2 bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm hover:bg-white/50 dark:hover:bg-gray-800/80 hover:shadow-lg transition-all duration-200">{data.class.classItem[1]}</p>
+                    </div>
+
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8" style = {{color: correctedColor}}>Background Questions</h2>
+                    <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 mb-6 sm:mb-8">
+                        {data.class.questions.map((question, index)=>(
+                            <p className="p-6 rounded-lg border-2 bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm hover:bg-white/50 dark:hover:bg-gray-800/80 hover:shadow-lg transition-all duration-200" key = {index}> {question} </p>
+                        ))
+
+                        }
+                    </div>
+
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8" style = {{color: correctedColor}}>Group Connections</h2>
+                    <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 mb-6 sm:mb-8">
+                        {data.class.connections.map((connection, index)=>(
+                            <p className="p-6 rounded-lg border-2 bg-white/10 dark:bg-gray-800/20 backdrop-blur-sm hover:bg-white/50 dark:hover:bg-gray-800/80 hover:shadow-lg transition-all duration-200" key = {index}> {connection} </p>
+                        ))
+
+                        }
+                    </div>
+
                 </Suspense>
 
                 <div className="h-8 sm:h-12 lg:h-16" />
